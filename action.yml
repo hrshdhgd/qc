@@ -44,12 +44,12 @@ runs:
     - name: Test with pytest and generate coverage file
       run: poetry run tox -e py
       shell: bash
-      if: ${{ inputs.tox == true }}
+      if: ${{ inputs.tox }}
     
     - name: Test with pytest.
       run: poetry run pytest
       shell: bash
-      if: ${{ inputs.tox == false }}
+      if: ${{ not inputs.tox }}
     
     - run: echo "${{ inputs.tox }}"
       shell: bash
