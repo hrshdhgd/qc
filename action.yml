@@ -2,7 +2,7 @@ name: Quality check.
 author: Harshad Hegde <hhegde@lbl.gov>
 description: Quality check for a given project.
 inputs:
-  python-version: ["3.9"]
+  python-versions: ["3.9"]
 outputs:
   random-number:
     description: "Random number"
@@ -16,7 +16,7 @@ runs:
     - name: Set up Python ${{ inputs.python-versions }}
       uses: actions/setup-python@v3
       with:
-        python-version: ${{ inputs.python-version }}
+        python-version: ${{ inputs.python-versions }}
     
     - run: $GITHUB_ACTION_PATH/main.sh
       shell: bash
