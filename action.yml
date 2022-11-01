@@ -2,7 +2,7 @@ name: Quality check.
 author: Harshad Hegde <hhegde@lbl.gov>
 description: Quality check for a given project.
 inputs:
-  python-versions: ["3.9"]
+  python-versions: 
 outputs:
   random-number:
     description: "Random number"
