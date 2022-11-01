@@ -6,7 +6,7 @@ inputs:
     description: Python version(s).
   tox:
     description: Run tox
-    default: false
+    default: "false"
 outputs:
   random-number:
     description: Random number
