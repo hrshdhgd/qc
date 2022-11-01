@@ -2,10 +2,11 @@ name: Quality check.
 author: Harshad Hegde <hhegde@lbl.gov>
 description: Quality check for a given project.
 inputs:
-  python-versions: 
+  python-versions:
+    description: Python version(s).
 outputs:
   random-number:
-    description: "Random number"
+    description: Random number
     value: ${{ steps.random-number-generator.outputs.random-number }}
 
 runs:
