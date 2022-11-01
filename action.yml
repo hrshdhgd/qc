@@ -46,13 +46,17 @@ runs:
       shell: bash
       if: ${{ inputs.tox == true }}
     
-    - name: Test with pytest and generate coverage file
+    - name: Test with pytest.
       run: poetry run pytest
       shell: bash
       if: ${{ inputs.tox == false }}
     
+    - run: echo "${{ inputs.tox }}"
+      shell: bash
+
     - run: $GITHUB_ACTION_PATH/main.sh
       shell: bash
+
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
 
