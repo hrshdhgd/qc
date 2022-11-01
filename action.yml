@@ -34,22 +34,22 @@ runs:
     - name: Check code quality with flake8
       run: poetry run tox -e flake8
       shell: bash
-      if: ${{ inputs.tox == true }}
+      if: ${{ inputs.tox == 'true' }}
 
     - name: Check static typing with MyPy
       run: poetry run tox -e mypy
       shell: bash
-      if: ${{ inputs.tox == true }}
+      if: ${{ inputs.tox == 'true' }}
 
     - name: Test with pytest and generate coverage file
       run: poetry run tox -e py
       shell: bash
-      if: ${{ inputs.tox }}
+      if: ${{ inputs.tox == 'true' }}
     
     - name: Test with pytest.
       run: poetry run pytest
       shell: bash
-      if: ${{ not inputs.tox }}
+      if: ${{ inputs.tox == 'false' }}
     
     - run: echo "${{ inputs.tox }}"
       shell: bash
