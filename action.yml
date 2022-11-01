@@ -14,11 +14,31 @@ runs:
   steps:
     - name: Checkout code
       uses: actions/checkout@v2.5.0
-      
+
     - name: Set up Python ${{ inputs.python-versions }}
       uses: actions/setup-python@v4.3.0
       with:
         python-version: ${{ inputs.python-versions }}
+
+    - name: Install Poetry
+      run: pip install poetry
+      shell: bash
+
+    - name: Install dependencies
+      run: poetry install --no-interaction
+      shell: bash
+    
+    - name: Check code quality with flake8
+      run: poetry run tox -e flake8
+      shell: bash
+
+    - name: Check static typing with MyPy
+      run: poetry run tox -e mypy
+      shell: bash
+
+    - name: Test with pytest and generate coverage file
+      run: poetry run tox -e py
+      shell: bash
     
     - run: $GITHUB_ACTION_PATH/main.sh
       shell: bash
