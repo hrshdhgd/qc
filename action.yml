@@ -59,25 +59,16 @@ runs:
       shell: bash
       if: ${{ inputs.workflow-type == 'pypi' }}
 
-    - name: Set env variables
-      run: |
-        echo "DOC_DIR=${{ github.workspace }}/docs/" >> $GITHUB_ENV
-        echo "GH_PAGES_DIR=${{ github.workspace }}/gh-pages" >> $GITHUB_ENV
-        echo "NO_JEKYLL = ${{ github.workspace }}/.nojekyll" >> $GITHUB_ENV
-      shell: bash
-      if: ${{ inputs.workflow-type == 'docs' }}
-
-
     - name: Build documentation.
       run: |
         echo $PROJECT_DIR
         ls $PROJECT_DIR
         echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
-        mkdir $GH_PAGES_DIR
-        touch $NO_JEKYLL
-        poetry run sphinx-apidoc -o  $PROJECT_DIR --ext-autodoc -f
-        poetry run sphinx-build -b html $DOC_DIR _build
-        cp -r _build/* $GH_PAGES_DIR
+        mkdir ${{ github.workspace }}/gh-pages
+        touch ${{ github.workspace }}/gh-pages/.nojekyll
+        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
+#        poetry run sphinx-build -b html ${{ github.workspace }}/docs/ _build
+#        cp -r _build/* ${{ github.workspace }}/gh-pages/
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
