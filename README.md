@@ -25,7 +25,7 @@ build:
     workflow-type: qc
 ```
 
-## For docs
+## For docs (Using Sphinx only for now)
 ```
 - uses: hrshdhgd/qc-action@main
   with:
