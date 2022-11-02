@@ -1,8 +1,8 @@
 # Workflows
 This project is a combination of three GitHub Action Workflows commonly used in BBOP projects.
 - Quality Check (qc)
-- Autodeployment of documentation
-- PyPI Release
+- Autodeployment of documentation (docs)
+- PyPI Release (pypi)
 
 
 # Usage
