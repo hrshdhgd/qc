@@ -66,8 +66,7 @@ runs:
 
     - name: Build documentation.
       run: |
-        ls $PROJECT_DIR
-#        echo ${{ inputs.token }} >> $TOKEN_FILE
+        echo ${{ inputs.token }} >> $TOKEN_FILE
 #        mkdir ${{ github.workspace }}/gh-pages
 #        touch ${{ github.workspace }}/gh-pages/.nojekyll
 #        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
