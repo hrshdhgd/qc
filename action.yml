@@ -79,6 +79,15 @@ runs:
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
+    - name: Deploy documentation.
+      if: ${{ github.event_name == 'push' && inputs.workflow-type == 'docs'}}
+      uses: JamesIves/github-pages-deploy-action@v4.3.0
+      with:
+        branch: gh-pages
+        force: true
+        folder: gh-pages
+      shell: bash
+
       
 
     # - run: $GITHUB_ACTION_PATH/main.sh
