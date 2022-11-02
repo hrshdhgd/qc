@@ -91,11 +91,6 @@ runs:
       shell: bash
       if: ${{ inputs.workflow-type == 'pypi' }}
 
-    - name: Build source and wheel archives
-      run: poetry build
-      shell: bash
-      if: ${{ inputs.workflow-type == 'pypi' }}
-
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@v1.5.1
       with:
