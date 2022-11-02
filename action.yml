@@ -72,9 +72,7 @@ runs:
       run: |
         echo ${{ inputs.token }} >> $TOKEN_FILE
         mkdir $GH_PAGES_DIR
-        touch $NO_JEKYLL
-        ls $DOCS_DIR
-
+#        touch $NO_JEKYLL
 #        poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
 #        poetry run sphinx-build -b html $DOCS_DIR _build
 #        cp -r _build/* $GH_PAGES_DIR
