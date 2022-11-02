@@ -20,44 +20,44 @@ runs:
   using: "composite"
   steps:
     
-    # - name: Set up Python ${{ inputs.python-versions }}
-    #   uses: actions/setup-python@v4.3.0
-    #   with:
-    #     python-version: ${{ inputs.python-versions }}
+    - name: Set up Python ${{ inputs.python-versions }}
+      uses: actions/setup-python@v4.3.0
+      with:
+        python-version: ${{ inputs.python-versions }}
 
-    # - name: Install Poetry
-    #   run: pip install poetry
-    #   shell: bash
+    - name: Install Poetry
+      run: pip install poetry
+      shell: bash
 
-    # - name: Install dependencies
-    #   run: poetry install --no-interaction
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'qc' }}
+    - name: Install dependencies
+      run: poetry install --no-interaction
+      shell: bash
+      if: ${{ inputs.workflow-type == 'qc' }}
 
-    # - name: Install doc extras
-    #   run: poetry install -E docs
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'docs' }}
+    - name: Install doc extras
+      run: poetry install -E docs
+      shell: bash
+      if: ${{ inputs.workflow-type == 'docs' }}
 
-    # - name: Add poetry dynamic versioning plugin
-    #   run: poetry self add "poetry-dynamic-versioning[plugin]"
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'pypi' }}
+    - name: Add poetry dynamic versioning plugin
+      run: poetry self add "poetry-dynamic-versioning[plugin]"
+      shell: bash
+      if: ${{ inputs.workflow-type == 'pypi' }}
     
-    # - name: Check code quality, static typing and run tests with tox
-    #   run: poetry run tox
-    #   shell: bash
-    #   if: ${{ inputs.use-tox == 'true' && inputs.workflow-type == 'qc'}}
+    - name: Check code quality, static typing and run tests with tox
+      run: poetry run tox
+      shell: bash
+      if: ${{ inputs.use-tox == 'true' && inputs.workflow-type == 'qc'}}
     
-    # - name: Test with pytest.
-    #   run: poetry run pytest
-    #   shell: bash
-    #   if: ${{ inputs.use-tox == 'false' && inputs.workflow-type == 'qc'}}
+    - name: Test with pytest.
+      run: poetry run pytest
+      shell: bash
+      if: ${{ inputs.use-tox == 'false' && inputs.workflow-type == 'qc'}}
 
-    # - name: Build source and wheel archives
-    #   run: poetry build
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'pypi' }}
+    - name: Build source and wheel archives
+      run: poetry build
+      shell: bash
+      if: ${{ inputs.workflow-type == 'pypi' }}
 
     - name: Build documentation.
       run: |
@@ -67,9 +67,9 @@ runs:
         mkdir ${{ github.workspace }}/gh-pages
         touch ${{ github.workspace }}/gh-pages/.nojekyll
         cd ${{ github.workspace }}/docs/
-#        poetry run sphinx-apidoc -o . $PROJECT_DIR/ --ext-autodoc -f
-#        poetry run sphinx-build -b html . _build
-#        cp -r _build/* ${{ github.workspace }}/gh-pages/
+        poetry run sphinx-apidoc -o . $PROJECT_DIR/ --ext-autodoc -f
+        poetry run sphinx-build -b html . _build
+        cp -r _build/* ${{ github.workspace }}/gh-pages/
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
