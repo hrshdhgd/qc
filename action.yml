@@ -68,8 +68,8 @@ runs:
         touch ${{ github.workspace }}/gh-pages/.nojekyll
         cd ${{ github.workspace }}/docs/
         poetry run sphinx-apidoc -o . $PROJECT_DIR/ --ext-autodoc -f
-        poetry run sphinx-build -b html . _build
-        cp -r _build/* ${{ github.workspace }}/gh-pages/
+#        poetry run sphinx-build -b html . _build
+#        cp -r _build/* ${{ github.workspace }}/gh-pages/
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
