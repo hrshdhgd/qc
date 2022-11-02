@@ -75,8 +75,8 @@ runs:
         touch $NO_JEKYLL
         cd $DOCS_DIR
         poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
-        poetry run sphinx-build -b html $DOCS_DIR _build
-        cp -r _build/* $GH_PAGES_DIR
+#        poetry run sphinx-build -b html $DOCS_DIR _build
+#        cp -r _build/* $GH_PAGES_DIR
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
