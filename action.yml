@@ -64,6 +64,7 @@ runs:
         echo "TOKEN_FILE=$PROJECT_DIR/token.txt" >> $GITHUB_ENV
         echo "GH_PAGES_DIR=${{ github.workspace }}/gh-pages" >> $GITHUB_ENV
         echo "NO_JEKYLL=${{ github.workspace }}/gh-pages/.nojekyll" >> $GITHUB_ENV
+        echo "DOCS_DIR=${{ github.workspace }}/docs" >> $GITHUB_ENV
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
@@ -72,7 +73,7 @@ runs:
         echo ${{ inputs.token }} >> $TOKEN_FILE
         mkdir $GH_PAGES_DIR
         touch $NO_JEKYLL
-#        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
+        poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
 #        poetry run sphinx-build -b html ${{ github.workspace }}/docs/ _build
 #        cp -r _build/* ${{ github.workspace }}/gh-pages/
       shell: bash
