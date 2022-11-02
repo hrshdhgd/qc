@@ -39,45 +39,45 @@ runs:
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
-    # - name: Add poetry dynamic versioning plugin
-    #   run: poetry self add "poetry-dynamic-versioning[plugin]"
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'pypi' }}
+    - name: Add poetry dynamic versioning plugin
+      run: poetry self add "poetry-dynamic-versioning[plugin]"
+      shell: bash
+      if: ${{ inputs.workflow-type == 'pypi' }}
     
-    # - name: Check code quality, static typing and run tests with tox
-    #   run: poetry run tox
-    #   shell: bash
-    #   if: ${{ inputs.use-tox == 'true' && inputs.workflow-type == 'qc'}}
+    - name: Check code quality, static typing and run tests with tox
+      run: poetry run tox
+      shell: bash
+      if: ${{ inputs.use-tox == 'true' && inputs.workflow-type == 'qc'}}
     
-    # - name: Test with pytest.
-    #   run: poetry run pytest
-    #   shell: bash
-    #   if: ${{ inputs.use-tox == 'false' && inputs.workflow-type == 'qc'}}
+    - name: Test with pytest.
+      run: poetry run pytest
+      shell: bash
+      if: ${{ inputs.use-tox == 'false' && inputs.workflow-type == 'qc'}}
 
-    # - name: Build source and wheel archives
-    #   run: poetry build
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'pypi' }}
+    - name: Build source and wheel archives
+      run: poetry build
+      shell: bash
+      if: ${{ inputs.workflow-type == 'pypi' }}
 
-    # - name: Set environment variables.
-    #   run: |
-    #     echo "TOKEN_FILE=$PROJECT_DIR/token.txt" >> $GITHUB_ENV
-    #     echo "GH_PAGES_DIR=${{ github.workspace }}/gh-pages/" >> $GITHUB_ENV
-    #     echo "NO_JEKYLL=${{ github.workspace }}/gh-pages/.nojekyll" >> $GITHUB_ENV
-    #     echo "DOCS_DIR=${{ github.workspace }}/docs/" >> $GITHUB_ENV
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'docs' }}
+    - name: Set environment variables.
+      run: |
+        echo "TOKEN_FILE=$PROJECT_DIR/token.txt" >> $GITHUB_ENV
+        echo "GH_PAGES_DIR=${{ github.workspace }}/gh-pages/" >> $GITHUB_ENV
+        echo "NO_JEKYLL=${{ github.workspace }}/gh-pages/.nojekyll" >> $GITHUB_ENV
+        echo "DOCS_DIR=${{ github.workspace }}/docs/" >> $GITHUB_ENV
+      shell: bash
+      if: ${{ inputs.workflow-type == 'docs' }}
 
-    # - name: Build documentation.
-    #   run: |
-    #     echo ${{ inputs.token }} >> $TOKEN_FILE
-    #     mkdir $GH_PAGES_DIR
-    #     touch $NO_JEKYLL
-    #     poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
-    #     poetry run sphinx-build -b html $DOCS_DIR _build
-    #     cp -r _build/* $GH_PAGES_DIR
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'docs' }}
+    - name: Build documentation.
+      run: |
+        echo ${{ inputs.token }} >> $TOKEN_FILE
+        mkdir $GH_PAGES_DIR
+        touch $NO_JEKYLL
+        poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
+        poetry run sphinx-build -b html $DOCS_DIR _build
+        cp -r _build/* $GH_PAGES_DIR
+      shell: bash
+      if: ${{ inputs.workflow-type == 'docs' }}
 
       
 
