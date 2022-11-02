@@ -32,7 +32,7 @@ runs:
     - name: Install dependencies
       run: poetry install --no-interaction
       shell: bash
-      if: ${{ inputs.workflow-type == 'qc' }}
+      if: ${{ inputs.workflow-type != 'docs' }}
 
     - name: Install doc extras
       run: poetry install -E docs
@@ -40,7 +40,9 @@ runs:
       if: ${{ inputs.workflow-type == 'docs' }}
 
     - name: Add poetry dynamic versioning plugin
-      run: poetry self add "poetry-dynamic-versioning[plugin]"
+      run: |
+        poetry self add "poetry-dynamic-versioning[plugin]"
+        poetry build
       shell: bash
       if: ${{ inputs.workflow-type == 'pypi' }}
     
@@ -86,6 +88,13 @@ runs:
         branch: gh-pages
         force: true
         folder: gh-pages
+
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.5.1
+      with:
+        user: __token__
+        password: ${{ inputs.token }}
+      if: ${{ inputs.workflow-type == 'pypi' }}
 
     # - run: $GITHUB_ACTION_PATH/main.sh
     #   shell: bash
