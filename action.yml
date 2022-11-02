@@ -62,9 +62,9 @@ runs:
     - name: Build documentation.
       run: |
         echo ${{ github.action_path}}
-        echo ${{ env.GITHUB_WORKSPACE }}
-        echo ${{ env.GITHUB_PATH }}
-        echo ${{ env.GITHUB_ENV }}
+        echo ${{ github.workspace }}
+        echo ${{ github.path }}
+        echo ${{ github.env }}
 #        echo ${{ inputs.token }} >> src/oakx_grape/token.txt
 #        mkdir gh-pages
 #        touch gh-pages/.nojekyll
