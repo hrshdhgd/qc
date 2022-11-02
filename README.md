@@ -43,3 +43,9 @@ build:
     token: ${{ secrets.PYPI_TOKEN }}
 
 ```
+
+Examples of complete workflow configurations:
+
+ - [qc](https://github.com/hrshdhgd/workflow-test/blob/main/.github/workflows/qc.yml)
+ - [docs](https://github.com/hrshdhgd/workflow-test/blob/main/.github/workflows/docs.yml)
+ - [pypi](https://github.com/hrshdhgd/workflow-test/tree/main/.github/workflows)
