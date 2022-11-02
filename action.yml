@@ -74,7 +74,8 @@ runs:
         mkdir $GH_PAGES_DIR
         touch $NO_JEKYLL
         ls $DOCS_DIR
-        poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
+        ls $PROJECT_DIR
+#        poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
 #        poetry run sphinx-build -b html $DOCS_DIR _build
 #        cp -r _build/* $GH_PAGES_DIR
       shell: bash
