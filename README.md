@@ -44,7 +44,7 @@ build:
 
 ```
 
-Examples of complete workflow configurations:
+# Examples of complete workflow configurations:
 
  - [qc](https://github.com/hrshdhgd/workflow-test/blob/main/.github/workflows/qc.yml)
  - [docs](https://github.com/hrshdhgd/workflow-test/blob/main/.github/workflows/docs.yml)
