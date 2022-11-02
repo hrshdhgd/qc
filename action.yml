@@ -63,7 +63,7 @@ runs:
       run: |
         echo $PROJECT_DIR
         ls $PROJECT_DIR
-#        echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
+        echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
 #        mkdir ${{ github.workspace }}/gh-pages
 #        touch ${{ github.workspace }}/gh-pages/.nojekyll
 #        cd ${{ github.workspace }}/docs/
