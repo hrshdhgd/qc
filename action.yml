@@ -59,10 +59,15 @@ runs:
       shell: bash
       if: ${{ inputs.workflow-type == 'pypi' }}
 
+    - name: Set env
+      run: echo "TOKEN_FILE=$PROJECT_DIR/token.txt" >> $GITHUB_ENV
+      shell: bash
+      if: ${{ inputs.workflow-type == 'docs' }}
+
     - name: Build documentation.
       run: |
-        echo $PROJECT_DIR
-#        echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
+        ls $PROJECT_DIR
+#        echo ${{ inputs.token }} >> $TOKEN_FILE
 #        mkdir ${{ github.workspace }}/gh-pages
 #        touch ${{ github.workspace }}/gh-pages/.nojekyll
 #        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
