@@ -32,7 +32,7 @@ runs:
     - name: Install dependencies
       run: poetry install --no-interaction
       shell: bash
-      if: ${{ inputs.workflow-type != 'docs' }}
+      if: ${{ inputs.workflow-type == 'qc' }}
 
     - name: Install doc extras
       run: poetry install -E docs
