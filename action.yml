@@ -47,12 +47,12 @@ runs:
     - name: Check code quality, static typing and run tests with tox
       run: poetry run tox
       shell: bash
-      if: ${{ inputs.use-tox == 'true' and inputs.workflow-type == 'qc'}}
+      if: ${{ inputs.use-tox == 'true' && inputs.workflow-type == 'qc'}}
     
     - name: Test with pytest.
       run: poetry run pytest
       shell: bash
-      if: ${{ inputs.use-tox == 'false' and inputs.workflow-type == 'qc'}}
+      if: ${{ inputs.use-tox == 'false' && inputs.workflow-type == 'qc'}}
 
     - name: Build source and wheel archives
       run: poetry build
