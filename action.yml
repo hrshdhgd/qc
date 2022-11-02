@@ -62,9 +62,9 @@ runs:
     - name: Build documentation.
       run: |
         echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
-        mkdir ${{ github.workspace }}/gh-pages
-        touch ${{ github.workspace }}/gh-pages/.nojekyll
-        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
+#        mkdir ${{ github.workspace }}/gh-pages
+#        touch ${{ github.workspace }}/gh-pages/.nojekyll
+#        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
 #        poetry run sphinx-build -b html ${{ github.workspace }}/docs/ _build
 #        cp -r _build/* ${{ github.workspace }}/gh-pages/
       shell: bash
