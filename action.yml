@@ -63,7 +63,7 @@ runs:
       run: |
         echo $PROJECT_DIR
         ls ${{ github.workspace }}
-        echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
+#        echo ${{ inputs.token }} >> $PROJECT_DIR/token.txt
 #        mkdir ${{ github.workspace }}/gh-pages
 #        touch ${{ github.workspace }}/gh-pages/.nojekyll
 #        poetry run sphinx-apidoc -o ${{ github.workspace }}/docs/ $PROJECT_DIR/ --ext-autodoc -f
