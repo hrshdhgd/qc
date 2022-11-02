@@ -4,7 +4,7 @@ description: Quality check for a given project.
 inputs:
   python-versions:
     description: Python version(s).
-  tox:
+  use-tox:
     description: Run tox
     default: "false"
 # outputs:
@@ -29,25 +29,15 @@ runs:
       run: poetry install --no-interaction
       shell: bash
     
-    - name: Check code quality with flake8
-      run: poetry run tox -e flake8
+    - name: Check code quality, static typing and run tests with tox
+      run: poetry run tox
       shell: bash
-      if: ${{ inputs.tox == 'true' }}
-
-    - name: Check static typing with MyPy
-      run: poetry run tox -e mypy
-      shell: bash
-      if: ${{ inputs.tox == 'true' }}
-
-    - name: Test with pytest and generate coverage file
-      run: poetry run tox -e py
-      shell: bash
-      if: ${{ inputs.tox == 'true' }}
+      if: ${{ inputs.use-tox == 'true' }}
     
     - name: Test with pytest.
       run: poetry run pytest
       shell: bash
-      if: ${{ inputs.tox == 'false' }}
+      if: ${{ inputs.use-tox == 'false' }}
 
     # - run: $GITHUB_ACTION_PATH/main.sh
     #   shell: bash
