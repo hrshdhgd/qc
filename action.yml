@@ -34,10 +34,10 @@ runs:
       shell: bash
       if: ${{ inputs.workflow-type == 'qc' }}
 
-    # - name: Install doc extras
-    #   run: poetry install -E docs
-    #   shell: bash
-    #   if: ${{ inputs.workflow-type == 'docs' }}
+    - name: Install doc extras
+      run: poetry install -E docs
+      shell: bash
+      if: ${{ inputs.workflow-type == 'docs' }}
 
     - name: Add poetry dynamic versioning plugin
       run: poetry self add "poetry-dynamic-versioning[plugin]"
@@ -73,9 +73,10 @@ runs:
         echo ${{ inputs.token }} >> $TOKEN_FILE
         mkdir $GH_PAGES_DIR
         touch $NO_JEKYLL
-        poetry run sphinx-apidoc -o $DOCS_DIR $PROJECT_DIR --ext-autodoc -f
-#        poetry run sphinx-build -b html ${{ github.workspace }}/docs/ _build
-#        cp -r _build/* ${{ github.workspace }}/gh-pages/
+        cd $DOCS_DIR
+        poetry run sphinx-apidoc -o . $PROJECT_DIR --ext-autodoc -f
+        poetry run sphinx-build -b html . _build
+        cp -r _build/* $GH_PAGES_DIR
       shell: bash
       if: ${{ inputs.workflow-type == 'docs' }}
 
